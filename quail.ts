@@ -47,11 +47,13 @@ for (let index = 0; index < randint(3, 5); index++) {
     quail.setBounceOnWall(true)
     quail.z = 10
 }
+sprites.onOverlap(SpriteKind.Quail, SpriteKind.Player, function(sprite: Sprite, otherSprite: Sprite) {
+    sprite.data["follow"] = true;
+})
 game.onUpdateInterval(2000, function () {
     if (sprites.allOfKind(SpriteKind.Quail).length < 80) {
         for (let value of sprites.allOfKind(SpriteKind.Quail)) {
-            let following = game.currentScene().followingSprites;
-            if (!following || !following.find(el => el && el.self == value)) {
+            if (!(value && value.data && value.data["follow"])) {
                 quail_egg = sprites.create(img`
                     . . . c c . . . 
                     . . c 1 1 c . . 
