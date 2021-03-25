@@ -6,9 +6,9 @@
         "device": "*"
     },
     "files": [
-        "main.ts",
         "README.md",
-        "assets.json"
+        "assets.json",
+        "quail.ts"
     ],
     "testFiles": [],
     "targetVersions": {
